@@ -1,10 +1,13 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
-import './scss/app.scss'
+import './scss/main.scss'
+
+import ListItems from './components/ListItems'
 
 function App() {
   return (
-    <div className="container">
-      <h1 className='display-1'>Pokedex</h1>
+    <div className="container-fluid">
+      <h1 className='display-1 m-4'>Pokedex</h1>
+      <ListItems />
     </div>
   );
 }
