@@ -1,6 +1,6 @@
 {
-  "name": "ramiel",
-  "description": "react biolerplate",
+  "name": "pokedex",
+  "description": "pokedex challenge",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
