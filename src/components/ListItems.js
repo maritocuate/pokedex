@@ -1,21 +1,28 @@
 import React, { useEffect, useState } from 'react';
-import { IoCaretBackCircleSharp, IoCaretForwardCircleSharp } from 'react-icons/io5'
+
 import Item from './Item';
+import Controls from './Controls';
 
 function ListItems() {
 
      const [list, setList] = useState([])
+     const [urlBack, setUrlBack] = useState('')
+     const [urlForward, setUrlForward] = useState('')
+     const [page, setPage] = useState(1)
 
      useEffect(() => {
-          callApiList()
-     }, [])
+          if(urlBack==='') callApiList('https://pokeapi.co/api/v2/pokemon?limit=5&offset=0')
+     }, [urlBack])
 
-     const callApiList = () => {
-          fetch('https://pokeapi.co/api/v2/pokemon?limit=5&offset=20')
+     const callApiList = urlApi => {
+          if(!urlApi) return
+
+          fetch(urlApi)
           .then(response => response.json())
           .then(pokes => {
-               console.log(pokes)
                setList(pokes.results)
+               setUrlBack(pokes.previous)
+               setUrlForward(pokes.next)
           })
      }
 
@@ -28,10 +35,12 @@ function ListItems() {
                          }
                     </ul>
                </div>
-               <span className='d-flex justify-content-between controls'>
-                    <IoCaretBackCircleSharp />
-                    <IoCaretForwardCircleSharp />
-               </span>
+               <Controls
+                    page={page}
+                    setPage={setPage}
+                    back={() => callApiList(urlBack)} 
+                    forward={() => callApiList(urlForward)}
+               />
           </>
      );
 }

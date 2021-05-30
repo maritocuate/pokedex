@@ -1,0 +1,18 @@
+.controls {
+     margin-top: 1.5rem;
+
+     .arrow {
+          width: 30px;
+          height: auto;
+          cursor: pointer;
+          &.disabled {
+               cursor: default;
+               opacity: .5;
+          }
+     }
+
+     .page-num {
+          font-weight: 900;
+          font-size: x-large;
+     }
+}

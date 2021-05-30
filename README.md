@@ -1,7 +1,6 @@
-# Ramiel
+# Pokedex Challenge
 
-**React** boilerplate. 
-Built to SPA.
+- SPA developed by Mario Quiroga.
 
 ### Dependencies
 - **Bootstrap 5.0.1**
