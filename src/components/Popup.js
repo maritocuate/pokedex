@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { GiWeight, GiBroadsword, GiSwordsEmblem } from 'react-icons/gi'
+import { FormattedMessage } from 'react-intl';
 
 import { PopupContext } from '../context/PopupContext';
 
@@ -37,9 +38,18 @@ function Popup() {
                                    <h5 className="card-title">{pokeInfo.name}</h5>
                                    <span className="card-text">
                                         <ul>
-                                             <li><GiWeight /> Weight: {pokeInfo.weight}</li>
-                                             <li><GiBroadsword /> Order: {pokeInfo.order}</li>
-                                             <li><GiSwordsEmblem /> Experience: {pokeInfo.base_experience}</li>
+                                             <li>
+                                                  <GiWeight /> 
+                                                  <FormattedMessage id='popup.weight' defaultMessage='Weight'/>: {pokeInfo.weight}
+                                             </li>
+                                             <li>
+                                                  <GiBroadsword /> 
+                                                  <FormattedMessage id='popup.order' defaultMessage='Order'/>: {pokeInfo.order}
+                                             </li>
+                                             <li>
+                                                  <GiSwordsEmblem /> 
+                                                  <FormattedMessage id='popup.experience' defaultMessage='Experience'/>: {pokeInfo.base_experience}
+                                             </li>
                                         </ul>
                                    </span>
                               </div>
