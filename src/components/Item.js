@@ -1,11 +1,16 @@
-import React from 'react'
+import React, { useContext } from 'react'
+
+import { PopupContext } from '../context/PopupContext'
 
 function Item(props) {
 
-     const {name} = props
+     const { name, url } = props
+     const { changeUrl } = useContext( PopupContext )
 
      return (
-          <li className='list-group-item'>{name}</li>
+          <>
+               <li className='list-group-item' onClick={()=>changeUrl(url)}>{name}</li>
+          </>
      )
 }
 

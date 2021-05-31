@@ -8,7 +8,6 @@ function ListItems() {
      const [list, setList] = useState([])
      const [urlBack, setUrlBack] = useState('')
      const [urlForward, setUrlForward] = useState('')
-     const [page, setPage] = useState(1)
 
      useEffect(() => {
           if(urlBack==='') callApiList('https://pokeapi.co/api/v2/pokemon?limit=5&offset=0')
@@ -31,13 +30,11 @@ function ListItems() {
                <div className='card container-list'>
                     <ul className='list-group'>
                          {
-                              list.map((item, index) => <Item key={index} name={item.name}/>)
+                              list.map((item, index) => <Item key={index} name={item.name} url={item.url} />)
                          }
                     </ul>
                </div>
                <Controls
-                    page={page}
-                    setPage={setPage}
                     back={() => callApiList(urlBack)} 
                     forward={() => callApiList(urlForward)}
                />

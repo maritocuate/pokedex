@@ -1,24 +1,26 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { IoCaretBackCircleSharp, IoCaretForwardCircleSharp } from 'react-icons/io5'
 
 function Controls(props) {
 
-     const {page, setPage, back, forward} = props
+     const {back, forward} = props
      const [limit, setLimit] = useState('disabled')
+     const [page, setPage] = useState(1)
+
+     useEffect(() => {
+          (page<2) ? setLimit('disabled') : setLimit('active')
+     }, [page])
 
      const goBack = () => {
           if(page > 1) {
                back()
                setPage(page-1)
           }
-          checkLimit()
      }
      const goForward = () => {
           forward()
           setPage(page+1)
-          checkLimit()
      }
-     const checkLimit = () => (page<2) ? setLimit('disabled') : setLimit('active')
 
      return (
           <div className='d-flex justify-content-between controls'>
